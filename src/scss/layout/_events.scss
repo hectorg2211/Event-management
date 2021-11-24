@@ -1,0 +1,27 @@
+.events {
+  padding-top: 20px;
+  gap: 20px;
+
+  .event {
+    width: $vw;
+    border: 1px solid $color-primary;
+    border-radius: $radius;
+
+    &__container {
+      justify-content: space-between;
+
+      &:first-of-type {
+        height: 30%;
+        background: red;
+        img {
+          height: 100%;
+          flex: 1;
+        }
+      }
+
+      &:not(:nth-of-type(1)) {
+        padding: 15px;
+      }
+    }
+  }
+}

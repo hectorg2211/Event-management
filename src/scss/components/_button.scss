@@ -1,0 +1,26 @@
+.btn {
+  border: none;
+  padding: 8px;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+
+  &--1 {
+    background: $color-secondary;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-tertiary;
+    }
+  }
+
+  &--2 {
+    background: $color-primary;
+    color: $color-tertiary;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

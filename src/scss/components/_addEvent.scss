@@ -1,0 +1,41 @@
+.event-creator {
+  &__container {
+    width: $vw;
+    background: $color-primary;
+    padding: 15px;
+
+    .form {
+      gap: 10px;
+
+      textarea {
+        resize: none;
+      }
+
+      &__container {
+        gap: 10px;
+
+        &:last-of-type {
+          align-items: flex-end;
+        }
+      }
+
+      .input {
+        height: 36px;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.75);
+        border: none;
+        border-radius: $radius;
+
+        &--1 {
+          padding: 10px;
+          font-family: inherit;
+          color: rgba(0, 0, 0, 0.75);
+        }
+      }
+
+      .btn {
+        height: 36px;
+      }
+    }
+  }
+}

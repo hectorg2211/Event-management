@@ -1,0 +1,14 @@
+.header {
+  justify-content: center;
+  background: $color-primary;
+
+  &__container {
+    width: $vw;
+    justify-content: space-between;
+    padding: 5px;
+
+    .navigation {
+      gap: 10px;
+    }
+  }
+}
