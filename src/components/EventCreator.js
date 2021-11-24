@@ -13,15 +13,16 @@ const EventCreator = ({ setShowEventCreator }) => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+  const [location] = useState("");
   const [dateTime, setDateTime] = useState("");
   const [tickets, setTickets] = useState(0);
+  const [image, setImage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
       type: actionTypes.ADD_EVENT,
-      event: { title, description, location, dateTime, tickets },
+      event: { title, description, location, dateTime, tickets, image },
     });
     setShowEventCreator(false);
   };
@@ -37,6 +38,13 @@ const EventCreator = ({ setShowEventCreator }) => {
               className="input"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
+            />
+            <input
+              type="text"
+              placeholder="Image URL"
+              className="input"
+              onChange={(e) => setImage(e.target.value)}
+              value={image}
             />
             <textarea
               className="input--1"

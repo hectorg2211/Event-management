@@ -16,6 +16,7 @@ const Home = () => {
         description={event.description}
         location={event.location}
         tickets={event.tickets}
+        image={event.image}
       />
     ));
 

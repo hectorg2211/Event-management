@@ -2,9 +2,9 @@
   border: none;
   padding: 8px;
   border-radius: $radius;
-  cursor: pointer;
   transition: all 0.2s;
   font-weight: 500;
+  cursor: pointer;
 
   &--1 {
     background: $color-secondary;
@@ -12,15 +12,15 @@
 
     &:hover {
       color: $color-tertiary;
+      transform: scale(1.1);
     }
   }
 
   &--2 {
     background: $color-primary;
     color: $color-tertiary;
-  }
-
-  &:hover {
-    transform: scale(1.1);
+    &:hover {
+      background: $color-secondary;
+    }
   }
 }

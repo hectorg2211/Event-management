@@ -8,7 +8,7 @@
     width: 100%;
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
@@ -17,19 +17,24 @@
     border-radius: $radius;
 
     &__container {
-      justify-content: space-between;
-
       &:first-of-type {
         height: 30%;
-        background: red;
         img {
           width: 100%;
           flex: 1;
         }
       }
 
-      &:not(:nth-of-type(1)) {
+      &:nth-of-type(2) {
         padding: 15px;
+      }
+
+      &:not(:first-of-type):not(:nth-of-type(2)):not(:last-of-type) {
+        padding: 0 15px 15px;
+      }
+
+      &:last-of-type {
+        padding: 0 15px 15px;
       }
     }
   }

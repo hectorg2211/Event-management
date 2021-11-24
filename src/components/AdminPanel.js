@@ -28,6 +28,7 @@ const AdminPanel = () => {
         description={event.description}
         location={event.location}
         tickets={event.tickets}
+        image={event.image}
       />
     ));
 
@@ -41,7 +42,7 @@ const AdminPanel = () => {
         <EventCreator setShowEventCreator={setShowEventCreator} />
       )}
 
-      {renderEvents()}
+      <div className="events__container">{renderEvents()}</div>
     </section>
   );
 };
