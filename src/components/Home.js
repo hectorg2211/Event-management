@@ -20,9 +20,9 @@ const Home = () => {
     ));
 
   return (
-    <section className="events d-flex-column d-flex-align-center">
+    <section className="events d-flex-column d-flex-align-center ">
       <h1 className="h1">Events</h1>
-      {renderEvents()}
+      <div className="events__container">{renderEvents()}</div>
     </section>
   );
 };

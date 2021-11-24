@@ -1,9 +1,18 @@
 .events {
   padding-top: 20px;
   gap: 20px;
+  width: $vw;
+  margin: auto;
+
+  &__container {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 
   .event {
-    width: $vw;
     border: 1px solid $color-primary;
     border-radius: $radius;
 
@@ -14,7 +23,7 @@
         height: 30%;
         background: red;
         img {
-          height: 100%;
+          width: 100%;
           flex: 1;
         }
       }
