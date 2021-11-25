@@ -1,7 +1,12 @@
 import React from "react";
 
-const Event = ({ title, date, description, location, tickets, image }) => {
-  console.log(image);
+// Context
+import { useStateValue } from "../context/StateProvider";
+
+const Event = ({ title, date, description, location, tickets, image, uid }) => {
+  const [{ user }] = useStateValue();
+  console.log(user?.uid, uid);
+
   return (
     <div className="event">
       <div className="event__container d-flex">
@@ -30,7 +35,9 @@ const Event = ({ title, date, description, location, tickets, image }) => {
       </div>
 
       <div className="event__container d-flex-column d-flex-justify-center">
-        <button className="btn btn--2">Register</button>
+        <button className="btn btn--2">
+          {user?.uid === uid ? "See your event" : "Register"}
+        </button>
       </div>
     </div>
   );

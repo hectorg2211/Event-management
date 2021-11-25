@@ -29,6 +29,7 @@ const AdminPanel = () => {
         location={event.location}
         tickets={event.tickets}
         image={event.image}
+        uid={event.createdByUID}
       />
     ));
 

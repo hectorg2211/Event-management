@@ -21,7 +21,6 @@ const Header = () => {
         type: actionTypes.SET_USER,
         user,
       });
-      console.log(user);
     });
   }, [dispatch]);
 
