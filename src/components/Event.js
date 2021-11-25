@@ -1,15 +1,7 @@
 import React from "react";
 import BasicModal from "./Modal";
 
-const Event = ({
-  id,
-  title,
-  date,
-  description,
-  // location,
-  image,
-  uid,
-}) => {
+const Event = ({ id, title, date, description, location, image, uid }) => {
   // const [{ user }, dispatch] = useStateValue();
 
   return (
@@ -29,7 +21,7 @@ const Event = ({
       </div>
 
       <div className="event__container d-flex">
-        <h3 className="h3">Location </h3>
+        <h3 className="h3">{location} </h3>
 
         {/* <h3 className="h3">{tickets}</h3> */}
       </div>

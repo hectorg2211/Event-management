@@ -14,7 +14,7 @@ const AdminPanel = () => {
 
   const navigate = useNavigate();
 
-  /* Navigate the use home when they are not signed in */
+  /* Navigate the user home when they are not signed in */
   useEffect(() => {
     if (!user) navigate("/");
   }, [user, navigate]);

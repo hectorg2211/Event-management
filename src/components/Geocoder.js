@@ -7,7 +7,7 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaGVjdG9yZzIyMTEiLCJhIjoiY2t0eWtxbmhtMDhwMTJwcG1jZXd0b3VhMSJ9.8XhBErdMP3PqsR-xN-NkMA";
 
-const Geocoder = () => {
+const Geocoder = ({ setLocation }) => {
   useEffect(() => {
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -16,9 +16,9 @@ const Geocoder = () => {
 
     geocoder.addTo(`#geocoder`);
     geocoder.on("result", (e) => {
-      console.log(e);
+      setLocation(e.result.place_name);
     });
-  }, []);
+  }, [setLocation]);
 
   return <div className="geocoder" id={`geocoder`}></div>;
 };

@@ -11,7 +11,7 @@ const EventCreator = ({ setShowEventCreator }) => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [location] = useState("");
+  const [location, setLocation] = useState("");
   const [dateTime, setDateTime] = useState("");
   const [tickets, setTickets] = useState(0);
   const [image, setImage] = useState("");
@@ -21,6 +21,7 @@ const EventCreator = ({ setShowEventCreator }) => {
     dispatch({
       type: actionTypes.ADD_EVENT,
       event: {
+        id: Math.random(),
         title,
         description,
         location,
@@ -28,6 +29,7 @@ const EventCreator = ({ setShowEventCreator }) => {
         tickets,
         image,
         createdByUID: user?.uid,
+        registered: [],
       },
     });
     setShowEventCreator(false);
@@ -67,7 +69,7 @@ const EventCreator = ({ setShowEventCreator }) => {
           <div className="form__container d-flex-justify-center">
             <div className="box d-flex-column d-flex-align-center">
               <h3 className="h3 h3--1">Location</h3>
-              <Geocoder />
+              <Geocoder setLocation={setLocation} />
             </div>
             <div className="box d-flex-column d-flex-align-center">
               <h3 className="h3 h3--1">Date & time</h3>
