@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasicModal from "./Modal";
 
 const Event = ({

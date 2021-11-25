@@ -6,6 +6,8 @@ import Modal from "@mui/material/Modal";
 import { useStateValue } from "../context/StateProvider";
 import { actionTypes } from "../context/reducer";
 
+import { Link } from "react-router-dom";
+
 const style = {
   display: "flex",
   flexDirection: "column",
@@ -54,9 +56,18 @@ export default function BasicModal({ createdByUid, id }) {
 
   return (
     <>
-      <button className="btn btn--2" onClick={handleOpen}>
-        {user?.uid === createdByUid ? "See your event" : "Get tickets"}
-      </button>
+      {user?.uid === createdByUid ? (
+        <Link to={`/admin/${id}`}>
+          <button className="btn btn--2" onClick={handleOpen}>
+            {user?.uid === createdByUid ? "See your event" : "Get tickets"}
+          </button>
+        </Link>
+      ) : (
+        <button className="btn btn--2" onClick={handleOpen}>
+          Get tickets
+        </button>
+      )}
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -72,6 +83,7 @@ export default function BasicModal({ createdByUid, id }) {
               onChange={handleOnTicketChange}
             />
           </div>
+
           <button className="btn btn--2" onClick={handleRegisterClick}>
             Register
           </button>
