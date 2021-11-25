@@ -58,16 +58,21 @@ const reducer = (state, action) => {
 
     /* NOTE: Adding users to the event registered array*/
     case actionTypes.REGISTER_TO_EVENT:
-      /* TODO: Add the username to show on a list of registered individuals */
       if (!action.uid || !state.events) return { ...state };
       const event = state.events.find((event) => event.id === action.eventId);
 
-      if (event.registered.includes(action.uid)) return { ...state };
-      event.registered.push(action.uid);
+      if (event.registered.find((registered) => registered.uid === action.uid))
+        return { ...state };
+      event.registered.push({
+        username: action.username,
+        uid: action.uid,
+        tickets: action.tickets,
+      });
 
       const updatedEvent = state.events.map((element) =>
         element.id === action.eventId ? event : element
       );
+      console.log(state.events);
       return { ...state, events: updatedEvent };
     default:
       return state;

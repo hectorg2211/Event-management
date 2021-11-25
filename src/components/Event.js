@@ -1,34 +1,22 @@
 import React from "react";
 
-// Context
-import { actionTypes } from "../context/reducer";
-import { useStateValue } from "../context/StateProvider";
+import BasicModal from "./Modal";
 
 const Event = ({
   id,
   title,
   date,
   description,
-  location,
-  tickets,
+  // location,
   image,
   uid,
 }) => {
-  const [{ user }, dispatch] = useStateValue();
-
-  const handleButtonClick = () => {
-    dispatch({
-      type: actionTypes.REGISTER_TO_EVENT,
-      eventId: id,
-      uid: user.uid,
-    });
-  };
+  // const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="event d-flex-column">
       <div className="event__container d-flex">
         <img src={`${image}`} alt="title" />
-        {/* <div>Hello I'm an image</div> */}
       </div>
 
       <div className="event__container d-flex">
@@ -52,9 +40,7 @@ const Event = ({
       </div>
 
       <div className="event__container d-flex-column d-flex-justify-center">
-        <button className="btn btn--2" onClick={handleButtonClick}>
-          {user?.uid === uid ? "See your event" : "Register"}
-        </button>
+        <BasicModal createdByUid={uid} id={id} />
       </div>
     </div>
   );

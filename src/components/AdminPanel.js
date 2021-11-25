@@ -20,19 +20,21 @@ const AdminPanel = () => {
   }, [user, navigate]);
 
   const renderEvents = () =>
-    events.map((event, i) => (
-      <Event
-        key={i}
-        id={event.id}
-        title={event.title}
-        date={event.dateTime}
-        description={event.description}
-        location={event.location}
-        tickets={event.tickets}
-        image={event.image}
-        uid={event.createdByUID}
-      />
-    ));
+    events
+      .filter((event) => event.createdByUID === user?.uid)
+      .map((event, i) => (
+        <Event
+          key={i}
+          id={event.id}
+          title={event.title}
+          date={event.dateTime}
+          description={event.description}
+          location={event.location}
+          tickets={event.tickets}
+          image={event.image}
+          uid={event.createdByUID}
+        />
+      ));
 
   return (
     <section className="events d-flex-column d-flex-align-center">
