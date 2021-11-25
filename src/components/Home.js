@@ -11,13 +11,14 @@ const Home = () => {
     events.map((event, i) => (
       <Event
         key={i}
+        id={event.id}
         title={event.title}
         date={event.dateTime}
         description={event.description}
         location={event.location}
         tickets={event.tickets}
         image={event.image}
-        uid={event.uid}
+        uid={event.createdByUID}
       />
     ));
 

@@ -23,6 +23,7 @@ const AdminPanel = () => {
     events.map((event, i) => (
       <Event
         key={i}
+        id={event.id}
         title={event.title}
         date={event.dateTime}
         description={event.description}

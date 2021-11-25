@@ -1,5 +1,6 @@
 const dummyEvents = [
   {
+    id: 1,
     title: "A really cool event",
     dateTime: "This friday",
     description:
@@ -12,6 +13,7 @@ const dummyEvents = [
     registered: [],
   },
   {
+    id: 2,
     title: "Another cool event",
     dateTime: "Next week",
     description:
@@ -24,6 +26,7 @@ const dummyEvents = [
     registered: [],
   },
   {
+    id: 3,
     title: "The best event",
     dateTime: "Today",
     description:
@@ -42,14 +45,30 @@ export const initialState = { user: null, events: dummyEvents };
 export const actionTypes = {
   SET_USER: "SET_USER",
   ADD_EVENT: "ADD_EVENT",
+  REGISTER_TO_EVENT: "REGISTER_TO_EVENT",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return { ...state, user: action.user };
+
     case actionTypes.ADD_EVENT:
       return { ...state, events: [action.event, ...state.events] };
+
+    /* NOTE: Adding users to the event registered array*/
+    case actionTypes.REGISTER_TO_EVENT:
+      /* TODO: Add the username to show on a list of registered individuals */
+      if (!action.uid || !state.events) return { ...state };
+      const event = state.events.find((event) => event.id === action.eventId);
+
+      if (event.registered.includes(action.uid)) return { ...state };
+      event.registered.push(action.uid);
+
+      const updatedEvent = state.events.map((element) =>
+        element.id === action.eventId ? event : element
+      );
+      return { ...state, events: updatedEvent };
     default:
       return state;
   }

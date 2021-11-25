@@ -15,6 +15,8 @@
   .event {
     border: 1px solid $color-primary;
     border-radius: $radius;
+    align-self: normal;
+    justify-content: space-between;
 
     &__container {
       &:first-of-type {

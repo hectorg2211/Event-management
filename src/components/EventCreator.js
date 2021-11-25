@@ -7,9 +7,7 @@ import { actionTypes } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider.js";
 
 const EventCreator = ({ setShowEventCreator }) => {
-  const [events, dispatch] = useStateValue();
-
-  console.log(events);
+  const [{ user }, dispatch] = useStateValue();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,7 +20,15 @@ const EventCreator = ({ setShowEventCreator }) => {
     e.preventDefault();
     dispatch({
       type: actionTypes.ADD_EVENT,
-      event: { title, description, location, dateTime, tickets, image },
+      event: {
+        title,
+        description,
+        location,
+        dateTime,
+        tickets,
+        image,
+        createdByUID: user?.uid,
+      },
     });
     setShowEventCreator(false);
   };
