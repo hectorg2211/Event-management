@@ -81,6 +81,8 @@ export default function BasicModal({ createdByUid, id }) {
               type="number"
               value={numberOfTickets}
               onChange={handleOnTicketChange}
+              min="1"
+              max="5"
             />
           </div>
 
