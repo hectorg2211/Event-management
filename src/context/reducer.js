@@ -72,7 +72,6 @@ const reducer = (state, action) => {
       const updatedEvent = state.events.map((element) =>
         element.id === action.eventId ? event : element
       );
-      console.log(state.events);
       return { ...state, events: updatedEvent };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 
@@ -23,12 +23,29 @@ const style = {
   borderRadius: 3,
 };
 
-/* TODO: Add context to use user uid */
-
 export default function BasicModal({ createdByUid, id }) {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, events }, dispatch] = useStateValue();
   const [open, setOpen] = useState(false);
   const [numberOfTickets, setNumberOfTickets] = useState(1);
+  const [registered, setRegistered] = useState(false);
+
+  console.log("Modal", id);
+
+  /* TODO: Get the event that corresponds to the id*/
+  const currentEventRegistrations = events
+    .filter((event) => event.id === id)[0]
+    .registered.map((registration) => registration?.uid);
+
+  console.log(currentEventRegistrations, registered);
+
+  useEffect(() => {
+    if (currentEventRegistrations.includes(user?.uid)) setRegistered(true);
+    else setRegistered(false);
+  }, [currentEventRegistrations, user?.uid]);
+
+  // if(currentEventRegistrations.includes)
+  /* TODO: Get the list of registered users for that event */
+  /* TODO: Set state to check wether a uid is in the array of registered users */
 
   const handleOpen = () => {
     setOpen(true);
@@ -75,20 +92,29 @@ export default function BasicModal({ createdByUid, id }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="modal">
-          <div className="modal__container d-flex">
-            <h3 className="h3">Select amount of tickets:</h3>{" "}
-            <input
-              type="number"
-              value={numberOfTickets}
-              onChange={handleOnTicketChange}
-              min="1"
-              max="5"
-            />
-          </div>
+          {!registered && (
+            <>
+              <div className="modal__container d-flex-align-center d-flex-justify-between">
+                <h3 className="h3">Select amount of tickets:</h3>{" "}
+                <input
+                  type="number"
+                  value={numberOfTickets}
+                  onChange={handleOnTicketChange}
+                  min="1"
+                  max="5"
+                />
+              </div>
+              <button className="btn btn--2" onClick={handleRegisterClick}>
+                Register
+              </button>
+            </>
+          )}
 
-          <button className="btn btn--2" onClick={handleRegisterClick}>
-            Register
-          </button>
+          {registered && (
+            <h3 className="h3 d-flex-justify-center">
+              You are already registered to this event
+            </h3>
+          )}
         </Box>
       </Modal>
     </>
